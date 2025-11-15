@@ -1,0 +1,11 @@
+numpy
+pandas
+seaborn
+matplotlib
+scikit-learn
+imbalanced-learn
+xgboost==1.7.6
+streamlit
+shap==0.42.1
+joblib
+kagglehub
