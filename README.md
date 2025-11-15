@@ -25,9 +25,6 @@
 9. [Streamlit Dashboard](#streamlit-dashboard)
 10. [How to Run](#how-to-run)
 11. [Future Enhancements](#future-enhancements)
-12. [Acknowledgements](#acknowledgements)
-13. [Authors](#authors)
-
 ---
 
 ## 🌍 Overview
@@ -136,91 +133,102 @@ A complete end-to-end ML project for detecting fraudulent credit card transactio
 
 ---
 
-## 🚀 2️⃣ Train–Test Split
+## 🧮 Modeling Approach
+
+### 1️⃣ Train–Test Split
 ```python
-train_test_split(X, y, test_size=0.2, stratify=y)
-🧮 3️⃣ SMOTE Oversampling
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, stratify=y, random_state=42
+)
+```
+
+## 🧮 3️⃣ SMOTE Oversampling
 Balances fraud and genuine transactions in the training dataset.
 
-🤖 4️⃣ Algorithms Used
-Model	AUC
-Logistic Regression	~0.98
-Random Forest	0.9849
-XGBoost	~0.9763
+---
 
-📌 Final model saved:
-best_fraud_model_rf.joblib
+## 🤖 4️⃣ Algorithms Used
 
-🧠 5️⃣ Explainable AI (XAI)
+| Model | AUC |
+|-------|------|
+| Logistic Regression | ~0.98 |
+| Random Forest | **0.9849** |
+| XGBoost | ~0.9763 |
+
+📌 **Final model saved:**  
+`best_fraud_model_rf.joblib`
+
+---
+
+## 🧠 5️⃣ Explainable AI (XAI)
 SHAP force plot shows feature-wise contribution towards prediction.
 
-📈 Results
-✔ Performance Summary
-AUC: 0.9849
+---
 
-High Precision & Recall
+## 📈 Results
 
-PR Curve optimized for rare-event detection
+### ✔ Performance Summary
+- **AUC:** 0.9849  
+- High Precision & Recall  
+- PR Curve optimized for rare-event detection  
+- Low False Positives  
+- Very Low False Negatives  
 
-Low false positives
+### ✔ Outputs Generated
+- ROC Curve  
+- PR Curve  
+- Confusion Matrix  
+- SHAP Feature Impact  
 
-Very low false negatives
+---
 
-✔ Outputs Generated
-ROC Curve
+## 🖥️ Streamlit Dashboard
 
-PR Curve
+### Tabs Included
+| Tab | Function |
+|-----|----------|
+| Model Performance | Upload test CSV → see evaluation metrics |
+| Single Prediction | Enter values → PCA auto-generated → fraud score |
+| Batch Prediction | Upload CSV → get predictions for all rows |
+| Explainability | SHAP force plot for transparency |
 
-Confusion Matrix
+---
 
-SHAP Feature Impact
+## 🎨 UI Highlights
+- Blue–purple gradient fintech theme  
+- Compact charts  
+- Clean metric cards  
+- Modern layout  
 
-🖥️ Streamlit Dashboard
-Tabs Included
-Tab	Function
-Model Performance	Upload test CSV → see evaluation metrics
-Single Prediction	Enter basic values → PCA auto-generated → fraud score
-Batch Prediction	Upload CSV → get predictions for all rows
-Explainability	SHAP force plot for transparency
 
-🎨 UI Highlights
-Blue–purple gradient fintech theme
+## ⚙️ How to Run
 
-Compact charts
-
-Clean metric cards
-
-Modern layout
-
-⚙️ How to Run
-1️⃣ Install Dependencies
-bash
-Copy code
+### 1️⃣ Install Dependencies
+```bash
 pip install numpy pandas seaborn matplotlib scikit-learn imbalanced-learn xgboost streamlit shap joblib kagglehub
-2️⃣ Download Dataset (Optional)
-python
-Copy code
+```
+
+### 2️⃣ Download Dataset (Optional)
+```python
 import kagglehub
 kagglehub.dataset_download("mlg-ulb/creditcardfraud")
-3️⃣ Run Streamlit App
-bash
-Copy code
+```
+
+### 3️⃣ Run Streamlit App
+```bash
 streamlit run app.py
-🌱 Future Enhancements
-Feature	Description
-📡 API Deployment	Real-time fraud detection API
-🧠 Deep Learning	Autoencoders & LSTM models
-📊 Monitoring	Track model drift
-🔐 PCI-DSS Secure Version	Bank-grade secure version
-☁️ Cloud Deployment	HuggingFace / AWS Spaces
+```
 
-🙏 Acknowledgements
-Kaggle Contributors
 
-Scikit-Learn Community
+## 🌱 Future Enhancements
 
-XGBoost Developers
+| Feature | Description |
+|---------|-------------|
+| 📡 API Deployment | Real-time fraud detection API |
+| 🧠 Deep Learning | Autoencoders & LSTM models |
+| 📊 Monitoring | Track model drift and performance over time |
+| 🔐 PCI-DSS Secure Version | Bank-grade secure and compliant deployment |
+| ☁️ Cloud Deployment | Deploy on HuggingFace / AWS Spaces |
 
-Streamlit Team
-
-SHAP Authors
